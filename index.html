@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEFIANE CHEATS - C++ Tools</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/MkPG8r4f/xd.png">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -13,7 +14,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         body {
@@ -21,12 +22,10 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            background: #0f172a;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #000000 100%);
             color: #e2e8f0;
-            padding: 30px 15px;
+            padding: 25px 15px;
             overflow-x: hidden;
-            position: relative;
         }
 
         canvas {
@@ -34,58 +33,42 @@
             inset: 0;
             z-index: -2;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        h1.main-title {
-            font-size: 3.2rem;
+        h1 {
+            font-size: 2.8rem;
             font-weight: 700;
             color: #e2e8f0;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3);
-            margin: 20px 0 40px;
-            letter-spacing: 2px;
-            animation: neonPulse 4s infinite alternate;
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+            margin: 20px 0 45px;
+            letter-spacing: 1.5px;
+            animation: neonGlow 3s infinite alternate;
         }
 
-        @keyframes neonPulse {
-            0%, 100% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #3b82f6; }
-            50%      { text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 60px #3b82f6; }
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 10px #3b82f6, 0 0 20px #00d4ff; }
+            to   { text-shadow: 0 0 20px #3b82f6, 0 0 35px #00d4ff; }
         }
 
         .converter-container {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.78);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(59, 130, 246, 0.25);
+            border: 1px solid rgba(59, 130, 246, 0.28);
             border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 50px;
+            padding: 28px;
+            margin-bottom: 45px;
             width: 100%;
-            max-width: 680px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.08);
-            transform: translateY(30px);
+            max-width: 660px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.55);
+            transform: translateY(25px);
             opacity: 0;
-            animation: fadeInUp 1s forwards;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .converter-container::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(45deg, transparent, rgba(59,130,246,0.15), transparent);
-            pointer-events: none;
-            animation: borderGlow 6s linear infinite;
-        }
-
-        @keyframes borderGlow {
-            0%   { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            animation: fadeInUp 0.9s forwards;
         }
 
         .converter-container:hover {
-            transform: translateY(0) scale(1.015);
-            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25);
+            transform: translateY(5px);
+            box-shadow: 0 18px 50px rgba(59, 130, 246, 0.22);
         }
 
         @keyframes fadeInUp {
@@ -93,9 +76,9 @@
         }
 
         .converter-container h1 {
-            font-size: 1.9rem;
+            font-size: 1.85rem;
             color: #cbd5e1;
-            margin-bottom: 28px;
+            margin-bottom: 25px;
             position: relative;
             display: inline-block;
         }
@@ -105,34 +88,33 @@
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 70px;
+            width: 65px;
             height: 3px;
             background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-            border-radius: 3px;
+            border-radius: 2px;
         }
 
         .dev-info, .dev-info1 {
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             color: #94a3b8;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 18px;
             font-weight: 300;
-            letter-spacing: 1px;
         }
 
         .input-group {
             display: flex;
             align-items: center;
-            margin: 18px 0;
+            margin: 16px 0;
             gap: 10px;
         }
 
         .input-group input {
             flex: 1;
-            padding: 14px 18px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 13px 16px;
+            border: 1px solid rgba(59, 130, 246, 0.35);
             border-radius: 10px;
-            background: rgba(30, 41, 59, 0.6);
+            background: rgba(30, 41, 59, 0.65);
             color: #f1f5f9;
             font-size: 1rem;
             outline: none;
@@ -140,77 +122,74 @@
 
         .input-group input:focus {
             border-color: #00d4ff;
-            box-shadow: 0 0 16px rgba(0, 212, 255, 0.35);
+            box-shadow: 0 0 14px rgba(0, 212, 255, 0.3);
         }
 
         .input-group button {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border: none;
             border-radius: 10px;
-            background: linear-gradient(135deg, #3b82f6, #00d4ff);
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
             color: white;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 5px 18px rgba(59, 130, 246, 0.35);
         }
 
         .input-group button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(96, 165, 250, 0.45);
         }
 
         #dropArea, #fontDropArea, #csDropArea {
-            border: 2px dashed rgba(59, 130, 246, 0.4);
-            border-radius: 14px;
-            padding: 40px 20px;
+            border: 2px dashed rgba(59, 130, 246, 0.45);
+            border-radius: 12px;
+            padding: 35px 20px;
             text-align: center;
-            margin: 25px 0;
+            margin: 22px 0;
             background: rgba(30, 41, 59, 0.4);
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.35s ease;
         }
 
         #dropArea:hover, #fontDropArea:hover, #csDropArea:hover,
         #dropArea.dragover, #fontDropArea.dragover, #csDropArea.dragover {
             border-color: #00d4ff;
-            background: rgba(59, 130, 246, 0.12);
-            transform: scale(1.02);
+            background: rgba(59, 130, 246, 0.15);
+            transform: scale(1.015);
         }
 
         .action-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
+            gap: 12px;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 28px;
         }
 
         .action-buttons button,
-        #extractOffsetsButton,
-        #clearCsButton,
         #convertImageButton,
-        #convertFontButton {
-            padding: 14px 32px;
+        #convertFontButton,
+        #extractOffsetsButton {
+            padding: 13px 30px;
             border: none;
             border-radius: 10px;
-            background: linear-gradient(135deg, #3b82f6, #00d4ff);
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
             color: white;
             font-weight: 500;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(59, 130, 246, 0.35);
         }
 
         .action-buttons button:hover,
-        #extractOffsetsButton:hover,
         #convertImageButton:hover,
-        #convertFontButton:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.55);
+        #convertFontButton:hover,
+        #extractOffsetsButton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(96, 165, 250, 0.5);
         }
 
         .clear-button,
@@ -219,7 +198,7 @@
         #clearFontButton,
         #clearCsButton {
             background: linear-gradient(135deg, #ef4444, #f87171) !important;
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
+            box-shadow: 0 5px 18px rgba(239, 68, 68, 0.35) !important;
         }
 
         .clear-button:hover {
@@ -230,11 +209,11 @@
         #csResult {
             max-height: 320px;
             overflow-y: auto;
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             border: 1px solid rgba(59, 130, 246, 0.3);
             border-radius: 12px;
             padding: 18px;
-            margin: 25px 0 15px;
+            margin: 22px 0 15px;
             color: #cbd5e1;
             font-family: 'Courier New', monospace;
             white-space: pre-wrap;
@@ -244,7 +223,7 @@
         .result-actions,
         #csActions {
             display: flex;
-            gap: 20px;
+            gap: 18px;
             justify-content: center;
             margin-top: 15px;
             display: none;
@@ -252,108 +231,128 @@
 
         .result-actions button,
         #csActions button {
-            padding: 12px 28px;
-            background: linear-gradient(135deg, #3b82f6, #00d4ff);
+            padding: 11px 24px;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
         }
 
-        /* Color Picker Section */
+        /* ── Color Picker Section ── */
+
         #colorPicker {
             width: 100%;
-            height: 70px;
+            height: 50px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
-            margin: 25px 0;
+            box-shadow: 0 0 18px rgba(0, 212, 255, 0.28);
+            margin: 18px 0 25px;
+        }
+
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0 22px;
+        }
+
+        .preview-box {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: background 0.4s ease;
         }
 
         #colorValues {
-            background: rgba(15, 23, 42, 0.7);
-            padding: 25px;
+            background: rgba(15, 23, 42, 0.75);
+            padding: 18px;
             border-radius: 12px;
             border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         #colorValues p {
-            margin: 16px 0;
+            margin: 11px 0;
+            font-size: 0.97rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 1.05rem;
+            gap: 12px;
         }
 
         #colorValues strong {
             color: #00d4ff;
-            min-width: 80px;
+            min-width: 68px;
         }
 
         .color-preview {
-            width: 36px;
-            height: 36px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
-            border: 3px solid #e2e8f0;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            margin: 0 12px;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 0 9px rgba(0,0,0,0.45);
+            flex-shrink: 0;
         }
 
         .copyButton {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.22);
             border: none;
-            border-radius: 8px;
-            padding: 8px;
+            border-radius: 7px;
+            padding: 7px;
             cursor: pointer;
+            min-width: 34px;
         }
 
         .copyButton:hover {
             background: rgba(0, 212, 255, 0.35);
         }
 
+        .copyButton img {
+            width: 17px;
+            height: 17px;
+            filter: invert(0.9);
+        }
+
         /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
+        ::-webkit-scrollbar { width: 9px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(#3b82f6, #00d4ff);
-            border-radius: 10px;
+            background: linear-gradient(#3b82f6, #60a5fa);
+            border-radius: 9px;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00d4ff;
-        }
+        ::-webkit-scrollbar-thumb:hover { background: #00d4ff; }
 
         /* Responsive */
         @media (max-width: 640px) {
-            h1.main-title { font-size: 2.4rem; }
-            .converter-container { padding: 24px 18px; }
-            .input-group { flex-direction: column; }
-            .input-group input { width: 100%; }
-            .input-group button { width: 100%; height: 48px; }
-            .action-buttons { flex-direction: column; }
-            .action-buttons button { width: 100%; }
+            h1 { font-size: 2.2rem; margin-bottom: 35px; }
+            .converter-container { padding: 22px 16px; }
+            .input-group { flex-direction: column; gap: 12px; }
+            .input-group input, .input-group button { width: 100%; }
+            .action-buttons { flex-direction: column; gap: 14px; }
+            .action-buttons button { width: 100%; padding: 14px; }
         }
     </style>
 </head>
+
 <body>
     <canvas id="canvas"></canvas>
 
-    <h1 class="main-title">SEFIANE CHEATS</h1>
+    <h1>SEFIANE CHEATS</h1>
 
     <div class="converter-container" style="animation-delay: 0.1s">
         <h1>Code Converter</h1>
         <div class="input-group">
             <input type="text" placeholder="Input" id="inputField">
-            <button id="inputIconButton1" title="Paste"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Paste" style="width:24px;height:24px;"></button>
-            <button id="inputIconButton2" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width:24px;height:24px;"></button>
+            <button id="inputIconButton1" title="Paste"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Paste" style="width:22px;height:22px;"></button>
+            <button id="inputIconButton2" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width:22px;height:22px;"></button>
         </div>
         <div class="input-group">
             <input type="text" placeholder="Output" id="outputField" readonly>
-            <button id="outputIconButton3" title="Copy"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy" style="width:24px;height:24px;"></button>
-            <button id="outputIconButton4" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width:24px;height:24px;"></button>
+            <button id="outputIconButton3" title="Copy"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy" style="width:22px;height:22px;"></button>
+            <button id="outputIconButton4" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width:22px;height:22px;"></button>
         </div>
         <div class="action-buttons">
             <button id="aobToByte">AOB → Byte</button>
@@ -446,41 +445,29 @@
         </div>
 
         <div id="colorValues">
-            <p>
-                <strong>HEX:</strong>
-                <span id="hexValue">#06746</span>
-                <span class="color-preview" id="hexPreview"></span>
-                <button class="copyButton" data-target="hexValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
-            </p>
-            <p>
-                <strong>RGBA:</strong>
-                <span id="rgbaValue">6, 247, 70, 1</span>
-                <span class="color-preview" id="rgbaPreview"></span>
-                <button class="copyButton" data-target="rgbaValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
-            </p>
-            <p>
-                <strong>Float:</strong>
-                <span id="rgbFloatValue">0.02, 0.97, 0.27</span>
-                <button class="copyButton" data-target="rgbFloatValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
-            </p>
-            <p>
-                <strong>CMYK:</strong>
-                <span id="cmykValue">88%, 0%, 72%, 3%</span>
-                <button class="copyButton" data-target="cmykValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
-            </p>
-            <p>
-                <strong>HSV:</strong>
-                <span id="hsvValue">100°, 68%, 87%</span>
-                <button class="copyButton" data-target="hsvValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
-            </p>
-            <p>
-                <strong>HSL:</strong>
-                <span id="hslValue">100°, 66%, 49%</span>
-                <button class="copyButton" data-target="hslValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
-            </p>
+            <p><strong>HEX:</strong> <span id="hexValue">#00d4ff</span> <span class="color-preview" id="hexPreview"></span> <button class="copyButton" data-target="hexValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button></p>
+            <p><strong>RGBA:</strong> <span id="rgbaValue">0, 212, 255, 1</span> <span class="color-preview" id="rgbaPreview"></span> <button class="copyButton" data-target="rgbaValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button></p>
+            <p><strong>Float:</strong> <span id="rgbFloatValue">0.00, 0.83, 1.00</span> <button class="copyButton" data-target="rgbFloatValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button></p>
+            <p><strong>CMYK:</strong> <span id="cmykValue">100%, 17%, 0%, 0%</span> <button class="copyButton" data-target="cmykValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button></p>
+            <p><strong>HSV:</strong> <span id="hsvValue">195°, 100%, 100%</span> <button class="copyButton" data-target="hsvValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button></p>
+            <p><strong>HSL:</strong> <span id="hslValue">195°, 100%, 50%</span> <button class="copyButton" data-target="hslValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button></p>
         </div>
     </div>
-    <script src="script.js"></script>
-</body>
 
+    <script src="script.js"></script>
+
+    <!-- إضافة تغيير لون مربع المعاينة تلقائياً -->
+    <script>
+        const colorPicker = document.getElementById('colorPicker');
+        const previewBox = document.getElementById('colorPreviewBox');
+
+        colorPicker.addEventListener('input', (e) => {
+            const color = e.target.value;
+            previewBox.style.backgroundColor = color;
+        });
+
+        // تشغيل أولي
+        previewBox.style.backgroundColor = colorPicker.value;
+    </script>
+</body>
 </html>
