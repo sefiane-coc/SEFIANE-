@@ -1,290 +1,242 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C++ Tools By MARO</title>
-    <link rel="icon" type="image/url" href="https://i.ibb.co/MkPG8r4f/xd.png">
+    <title>SEFIANE CHEATS - C++ Tools</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/MkPG8r4f/xd.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        /* Estilos Generales */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            background: rgb(36, 0, 36);
-            background: linear-gradient(180deg, rgba(36, 0, 36, 1) 10%, rgb(92, 6, 92) 35%, rgb(0, 0, 0) 100%);
-            padding: 20px;
+            background: #0f172a;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #000000 100%);
+            color: #e2e8f0;
+            padding: 30px 15px;
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            position: relative;
         }
 
         canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            inset: 0;
+            z-index: -2;
             pointer-events: none;
+            opacity: 0.6;
         }
 
-        h1 {
-            color: white;
-            text-align: center;
-            margin: 20px 0;
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(187, 0, 255, 0.7);
-            animation: glow 2s infinite alternate;
+        h1.main-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3);
+            margin: 20px 0 40px;
+            letter-spacing: 2px;
+            animation: neonPulse 4s infinite alternate;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 5px rgba(187, 0, 255, 0.7);
-            }
-            to {
-                text-shadow: 0 0 15px rgba(187, 0, 255, 0.9), 0 0 20px rgba(187, 0, 255, 0.5);
-            }
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #3b82f6; }
+            50%      { text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 60px #3b82f6; }
         }
-
-        /* Contenedores de Convertidores */
 
         .converter-container {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 25px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(187, 0, 255, 0.3);
-            margin-bottom: 40px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 50px;
             width: 100%;
-            max-width: 600px;
-            transform: translateY(20px);
+            max-width: 680px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.08);
+            transform: translateY(30px);
             opacity: 0;
-            animation: fadeInUp 0.8s forwards;
-            transition: all 0.5s ease;
+            animation: fadeInUp 1s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .converter-container::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, transparent, rgba(59,130,246,0.15), transparent);
+            pointer-events: none;
+            animation: borderGlow 6s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0%   { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .converter-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(187, 0, 255, 0.2);
+            transform: translateY(0) scale(1.015);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25);
         }
 
         @keyframes fadeInUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .converter-container h1 {
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            color: #ffffff;
+            font-size: 1.9rem;
+            color: #cbd5e1;
+            margin-bottom: 28px;
             position: relative;
-            padding-bottom: 10px;
+            display: inline-block;
         }
 
         .converter-container h1::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            bottom: -8px;
+            left: 0;
+            width: 70px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #bb00ff, transparent);
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
             border-radius: 3px;
         }
 
-        /* Grupos de Entrada */
+        .dev-info, .dev-info1 {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
 
         .input-group {
             display: flex;
             align-items: center;
-            margin: 15px 0;
-            position: relative;
+            margin: 18px 0;
+            gap: 10px;
         }
 
         .input-group input {
-            width: 70%;
-            padding: 12px 15px;
-            border: 1px solid rgba(187, 0, 255, 0.3);
-            border-radius: 8px;
-            margin-right: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 16px;
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+            background: rgba(30, 41, 59, 0.6);
+            color: #f1f5f9;
+            font-size: 1rem;
             outline: none;
         }
 
         .input-group input:focus {
-            border-color: #bb00ff;
-            box-shadow: 0 0 10px rgba(187, 0, 255, 0.5);
+            border-color: #00d4ff;
+            box-shadow: 0 0 16px rgba(0, 212, 255, 0.35);
         }
 
         .input-group button {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #8a2be2, #bb00ff);
+            border-radius: 10px;
+            background: linear-gradient(135deg, #3b82f6, #00d4ff);
             color: white;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 5px;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
         .input-group button:hover {
-            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.5);
         }
 
-        /* Áreas de Arrastrar/Soltar */
-
-        #dropArea,
-        #fontDropArea,
-        #csDropArea {
-            border: 2px dashed rgba(187, 0, 255, 0.5);
-            border-radius: 10px;
-            padding: 30px 20px;
+        #dropArea, #fontDropArea, #csDropArea {
+            border: 2px dashed rgba(59, 130, 246, 0.4);
+            border-radius: 14px;
+            padding: 40px 20px;
             text-align: center;
-            margin: 20px 0;
-            background-color: rgba(255, 255, 255, 0.1);
+            margin: 25px 0;
+            background: rgba(30, 41, 59, 0.4);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
-        #dropArea p,
-        #fontDropArea p,
-        #csDropArea p {
-            margin: 5px 0;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        #dropArea button,
-        #fontDropArea button,
-        #csDropArea button {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #8a2be2, #bb00ff);
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
-        }
-
-        #dropArea:hover,
-        #fontDropArea:hover,
-        #csDropArea:hover {
-            border-color: #bb00ff;
-            background-color: rgba(187, 0, 255, 0.1);
-        }
-
-        #dropArea.dragover,
-        #fontDropArea.dragover,
-        #csDropArea.dragover {
-            border-color: #bb00ff;
-            background-color: rgba(187, 0, 255, 0.2);
+        #dropArea:hover, #fontDropArea:hover, #csDropArea:hover,
+        #dropArea.dragover, #fontDropArea.dragover, #csDropArea.dragover {
+            border-color: #00d4ff;
+            background: rgba(59, 130, 246, 0.12);
             transform: scale(1.02);
         }
 
-        /* Botones de Acción */
-
         .action-buttons {
-            margin-top: 25px;
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 14px;
+            justify-content: center;
+            margin-top: 30px;
         }
 
         .action-buttons button,
         #extractOffsetsButton,
-        #clearCsButton {
-            padding: 12px 25px;
+        #clearCsButton,
+        #convertImageButton,
+        #convertFontButton {
+            padding: 14px 32px;
             border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #8a2be2, #bb00ff);
+            border-radius: 10px;
+            background: linear-gradient(135deg, #3b82f6, #00d4ff);
             color: white;
-            cursor: pointer;
-            font-size: 16px;
             font-weight: 500;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
             position: relative;
             overflow: hidden;
         }
 
-        .action-buttons button::before,
-        #extractOffsetsButton::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .action-buttons button:hover::before,
-        #extractOffsetsButton:hover::before {
-            left: 100%;
-        }
-
         .action-buttons button:hover,
-        #extractOffsetsButton:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
+        #extractOffsetsButton:hover,
+        #convertImageButton:hover,
+        #convertFontButton:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.55);
         }
 
         .clear-button,
-        #clearCsButton,
+        #clearAll,
         #clearImageButton,
-        #clearFontButton {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b) !important;
-            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4) !important;
+        #clearFontButton,
+        #clearCsButton {
+            background: linear-gradient(135deg, #ef4444, #f87171) !important;
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
         }
 
-        .clear-button:hover,
-        #clearCsButton:hover {
-            background: linear-gradient(135deg, #e53935, #d32f2f) !important;
+        .clear-button:hover {
+            background: linear-gradient(135deg, #dc2626, #f87171) !important;
         }
-
-        /* Áreas de Resultados */
 
         .result-container,
         #csResult {
-            max-height: 300px;
+            max-height: 320px;
             overflow-y: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            border: 1px solid rgba(187, 0, 255, 0.3);
-            text-align: left;
-            color: rgba(255, 255, 255, 0.8);
-            font-family: monospace;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 25px 0 15px;
+            color: #cbd5e1;
+            font-family: 'Courier New', monospace;
             white-space: pre-wrap;
             display: none;
         }
@@ -292,329 +244,155 @@
         .result-actions,
         #csActions {
             display: flex;
+            gap: 20px;
             justify-content: center;
-            gap: 15px;
             margin-top: 15px;
             display: none;
         }
 
         .result-actions button,
         #csActions button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #8a2be2, #bb00ff);
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #3b82f6, #00d4ff);
         }
 
-        .result-actions button:hover,
-        #csActions button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
-        }
-
-        /* Previsualizaciones */
-
-        .file-preview {
-            max-width: 100%;
-            max-height: 150px;
-            margin-top: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(187, 0, 255, 0.3);
-            display: none;
-        }
-
-        .file-info,
-        #csFileInfo,
-        #csStatus {
-            margin-top: 10px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            display: block;
-            text-align: center;
-        }
-
-        #csStatus {
-            color: #4CAF50;
-            font-style: italic;
-        }
-
-        /* Color Picker */
-
+        /* Color Picker Section */
         #colorPicker {
             width: 100%;
-            height: 60px;
+            height: 70px;
             border: none;
-            border-radius: 10px;
-            margin: 20px 0;
+            border-radius: 12px;
             cursor: pointer;
-            background: transparent;
-            box-shadow: 0 0 20px rgba(187, 0, 255, 0.3);
-        }
-
-        #colorPicker::-webkit-color-swatch {
-            border: none;
-            border-radius: 8px;
-        }
-
-        #colorPicker::-webkit-color-swatch-wrapper {
-            padding: 0;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+            margin: 25px 0;
         }
 
         #colorValues {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: left;
-            border: 1px solid rgba(187, 0, 255, 0.3);
+            background: rgba(15, 23, 42, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         #colorValues p {
-            margin: 12px 0;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
+            margin: 16px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            font-size: 1.05rem;
         }
 
         #colorValues strong {
-            color: #bb00ff;
-            margin-right: 10px;
+            color: #00d4ff;
+            min-width: 80px;
         }
 
         .color-preview {
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            display: inline-block;
-            margin-left: 10px;
-            border: 2px solid white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: 3px solid #e2e8f0;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            margin: 0 12px;
         }
-
-        .preview-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .preview-box {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #8a2be2, #bb00ff);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-            word-break: break-all;
-        }
-
-        /* Botones de Copiar */
 
         .copyButton {
-            background: none;
+            background: rgba(59, 130, 246, 0.2);
             border: none;
+            border-radius: 8px;
+            padding: 8px;
             cursor: pointer;
-            margin-left: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(187, 0, 255, 0.2);
         }
 
         .copyButton:hover {
-            background-color: rgba(187, 0, 255, 0.4);
-        }
-
-        .copyButton img {
-            width: 16px;
-            height: 16px;
-            filter: invert(1);
-        }
-
-        /* Inputs ocultos */
-
-        input[type="file"] {
-            display: none;
+            background: rgba(0, 212, 255, 0.35);
         }
 
         /* Scrollbar */
-
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            background: #0f172a;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(#8a2be2, #bb00ff);
+            background: linear-gradient(#3b82f6, #00d4ff);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #bb00ff;
+            background: #00d4ff;
         }
 
         /* Responsive */
-
-        @media (max-width: 768px) {
-            .converter-container {
-                padding: 20px 15px;
-            }
-            .input-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .input-group input {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            .input-group button {
-                width: 100%;
-                margin-left: 0;
-                margin-top: 5px;
-            }
-            .action-buttons,
-            .result-actions,
-            #csActions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .action-buttons button,
-            .result-actions button,
-            #csActions button {
-                width: 100%;
-            }
-        }
-
-        /* Animaciones */
-
-        .fade-in {
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .pulse {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .shake {
-            animation: shake 0.5s;
-        }
-
-        @keyframes shake {
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-            10%,
-            30%,
-            50%,
-            70%,
-            90% {
-                transform: translateX(-5px);
-            }
-            20%,
-            40%,
-            60%,
-            80% {
-                transform: translateX(5px);
-            }
+        @media (max-width: 640px) {
+            h1.main-title { font-size: 2.4rem; }
+            .converter-container { padding: 24px 18px; }
+            .input-group { flex-direction: column; }
+            .input-group input { width: 100%; }
+            .input-group button { width: 100%; height: 48px; }
+            .action-buttons { flex-direction: column; }
+            .action-buttons button { width: 100%; }
         }
     </style>
 </head>
-
 <body>
     <canvas id="canvas"></canvas>
 
-    <h1>SEFIANE CHEATS</h1>
+    <h1 class="main-title">SEFIANE CHEATS</h1>
 
     <div class="converter-container" style="animation-delay: 0.1s">
         <h1>Code Converter</h1>
         <div class="input-group">
             <input type="text" placeholder="Input" id="inputField">
-            <button id="inputIconButton1" title="Paste"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Paste" style="width: 20px; height: 20px;"></button>
-            <button id="inputIconButton2" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width: 20px; height: 20px;"></button>
+            <button id="inputIconButton1" title="Paste"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Paste" style="width:24px;height:24px;"></button>
+            <button id="inputIconButton2" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width:24px;height:24px;"></button>
         </div>
         <div class="input-group">
             <input type="text" placeholder="Output" id="outputField" readonly>
-            <button id="outputIconButton3" title="Copy"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy" style="width: 20px; height: 20px;"></button>
-            <button id="outputIconButton4" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width: 20px; height: 20px;"></button>
+            <button id="outputIconButton3" title="Copy"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy" style="width:24px;height:24px;"></button>
+            <button id="outputIconButton4" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width:24px;height:24px;"></button>
         </div>
         <div class="action-buttons">
-            <button id="aobToByte">Aob to Byte</button>
-            <button id="byteToAob">Byte to Aob</button>
+            <button id="aobToByte">AOB → Byte</button>
+            <button id="byteToAob">Byte → AOB</button>
             <button class="clear-button" id="clearAll">Clear All</button>
         </div>
-        <div class="dev-info">Dev by MARO</div>
+        <div class="dev-info">Developed by SEFIANE</div>
     </div>
 
     <div class="converter-container" style="animation-delay: 0.2s">
         <h1>Image Converter</h1>
-        <div class="dev-info1">Dev by MARO</div>
+        <div class="dev-info1">Developed by SEFIANE</div>
 
         <div id="dropArea">
-            <p>Drag or drop an image here</p>
+            <p>Drag & drop image here</p>
             <p>or</p>
             <button id="addImageButton">Upload Image</button>
-            <img id="imagePreview" class="file-preview" alt="Image preview">
+            <img id="imagePreview" class="file-preview" alt="Preview">
             <div id="imageInfo" class="file-info"></div>
         </div>
 
         <div id="imageResult" class="result-container"></div>
         <div id="imageActions" class="result-actions">
-            <button id="copyImageButton">Copy Byte</button>
-            <button id="downloadImageButton">Download File</button>
+            <button id="copyImageButton">Copy Bytes</button>
+            <button id="downloadImageButton">Download</button>
         </div>
 
-        <button id="clearImageButton">Clean Image</button>
-        <button id="convertImageButton">Convert Image to Cpp</button>
+        <button id="clearImageButton">Clear Image</button>
+        <button id="convertImageButton">Convert to C++</button>
 
-        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+        <input type="file" id="imageInput" accept="image/*" style="display:none;">
     </div>
 
     <div class="converter-container" style="animation-delay: 0.3s">
         <h1>Font Converter</h1>
-        <div class="dev-info1">Dev by MARO</div>
+        <div class="dev-info1">Developed by SEFIANE</div>
 
         <div id="fontDropArea">
-            <p>Drag or drop font (TTF/OTF)</p>
+            <p>Drag & drop font (TTF / OTF)</p>
             <p>or</p>
             <button id="addFontButton">Upload Font</button>
             <div id="fontInfo" class="file-info"></div>
@@ -622,26 +400,24 @@
 
         <div id="fontResult" class="result-container"></div>
         <div id="fontActions" class="result-actions">
-            <button id="copyFontButton">Copy Byte</button>
-            <button id="downloadFontButton">Download File</button>
+            <button id="copyFontButton">Copy Bytes</button>
+            <button id="downloadFontButton">Download</button>
         </div>
 
-        <button id="clearFontButton">Clear File</button>
-        <button id="convertFontButton">Convert Font to Cpp</button>
+        <button id="clearFontButton">Clear Font</button>
+        <button id="convertFontButton">Convert to C++</button>
 
-        <input type="file" id="fontInput" accept=".ttf,.otf" style="display: none;">
+        <input type="file" id="fontInput" accept=".ttf,.otf" style="display:none;">
     </div>
 
-
-
-    <div class="converter-container" style="animation-delay: 0.3s">
+    <div class="converter-container" style="animation-delay: 0.35s">
         <h1>Dump FF Offset Extractor</h1>
-        <div class="dev-info1">Dev by MARO</div>
+        <div class="dev-info1">Developed by SEFIANE</div>
 
         <div id="csDropArea">
-            <p>Drag or drop a .cs file here</p>
+            <p>Drag & drop .cs file</p>
             <p>or</p>
-            <button id="addCsButton">Upload .cs File</button>
+            <button id="addCsButton">Upload .cs</button>
             <div id="csFileInfo"></div>
         </div>
 
@@ -650,22 +426,20 @@
         <button id="extractOffsetsButton">Extract Offsets</button>
         <button id="clearCsButton">Clear File</button>
 
-        <div id="csResult"></div>
-        <div id="csActions">
+        <div id="csResult" class="result-container"></div>
+        <div id="csActions" class="result-actions">
             <button id="copyCsButton">Copy Offsets</button>
-            <button id="downloadCsButton">Download File</button>
+            <button id="downloadCsButton">Download</button>
         </div>
 
-        <input type="file" id="csInput" accept=".cs" style="display: none;" />
+        <input type="file" id="csInput" accept=".cs" style="display:none;">
     </div>
-    <br>
-    <br>
 
     <div class="converter-container" style="animation-delay: 0.4s">
         <h1>Color Picker</h1>
-        <div class="dev-info">Dev by MARO</div>
+        <div class="dev-info">Developed by SEFIANE</div>
 
-        <input type="color" id="colorPicker" value="#06746">
+        <input type="color" id="colorPicker" value="#00d4ff">
 
         <div class="preview-container">
             <div class="preview-box" id="colorPreviewBox">Preview</div>
