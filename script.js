@@ -936,4 +936,5 @@ function downloadCsResult() {
     setTimeout(() => {
         downloadCsButton.textContent = "Download File";
     }, 2000);
+
 }
