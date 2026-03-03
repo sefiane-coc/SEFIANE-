@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEFIANE CHEATS - C++ Tools</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/MkPG8r4f/xd.png">
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -316,6 +316,30 @@
             filter: invert(0.9);
         }
 
+        /* ── Image Preview Fix ── */
+        .file-preview,
+        #imagePreview {
+            display: block;
+            max-width: 100%;
+            max-height: 280px;           /* حجم معقول - يمكنك تعديله إلى 220px أو 320px */
+            width: auto;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            object-fit: contain;         /* يحافظ على النسبة بدون تمدد أو قطع */
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        .file-preview {
+            display: none;
+        }
+
+        #imagePreview.visible {
+            display: block;
+        }
+
         /* Scrollbar */
         ::-webkit-scrollbar { width: 9px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
@@ -333,6 +357,7 @@
             .input-group input, .input-group button { width: 100%; }
             .action-buttons { flex-direction: column; gap: 14px; }
             .action-buttons button { width: 100%; padding: 14px; }
+            #imagePreview { max-height: 220px; }
         }
     </style>
 </head>
@@ -456,7 +481,7 @@
 
     <script src="script.js"></script>
 
-    <!-- إضافة تغيير لون مربع المعاينة تلقائياً -->
+    <!-- تغيير لون مربع المعاينة تلقائيًا -->
     <script>
         const colorPicker = document.getElementById('colorPicker');
         const previewBox = document.getElementById('colorPreviewBox');
@@ -466,7 +491,6 @@
             previewBox.style.backgroundColor = color;
         });
 
-        // تشغيل أولي
         previewBox.style.backgroundColor = colorPicker.value;
     </script>
 </body>
