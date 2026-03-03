@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Tools By MARO</title>
+    <link rel="icon" type="image/url" href="https://i.ibb.co/MkPG8r4f/xd.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        /* Estilos Generales */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: rgb(36, 0, 36);
+            background: linear-gradient(180deg, rgba(36, 0, 36, 1) 10%, rgb(92, 6, 92) 35%, rgb(0, 0, 0) 100%);
+            padding: 20px;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(187, 0, 255, 0.7);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(187, 0, 255, 0.7);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(187, 0, 255, 0.9), 0 0 20px rgba(187, 0, 255, 0.5);
+            }
+        }
+
+        /* Contenedores de Convertidores */
+
+        .converter-container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(187, 0, 255, 0.3);
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 600px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+            transition: all 0.5s ease;
+        }
+
+        .converter-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(187, 0, 255, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .converter-container h1 {
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .converter-container h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #bb00ff, transparent);
+            border-radius: 3px;
+        }
+
+        /* Grupos de Entrada */
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 70%;
+            padding: 12px 15px;
+            border: 1px solid rgba(187, 0, 255, 0.3);
+            border-radius: 8px;
+            margin-right: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #bb00ff;
+            box-shadow: 0 0 10px rgba(187, 0, 255, 0.5);
+        }
+
+        .input-group button {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8a2be2, #bb00ff);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .input-group button:hover {
+            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+            transform: translateY(-2px);
+        }
+
+        /* Áreas de Arrastrar/Soltar */
+
+        #dropArea,
+        #fontDropArea,
+        #csDropArea {
+            border: 2px dashed rgba(187, 0, 255, 0.5);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #dropArea p,
+        #fontDropArea p,
+        #csDropArea p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        #dropArea button,
+        #fontDropArea button,
+        #csDropArea button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8a2be2, #bb00ff);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        #dropArea:hover,
+        #fontDropArea:hover,
+        #csDropArea:hover {
+            border-color: #bb00ff;
+            background-color: rgba(187, 0, 255, 0.1);
+        }
+
+        #dropArea.dragover,
+        #fontDropArea.dragover,
+        #csDropArea.dragover {
+            border-color: #bb00ff;
+            background-color: rgba(187, 0, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* Botones de Acción */
+
+        .action-buttons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .action-buttons button,
+        #extractOffsetsButton,
+        #clearCsButton {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8a2be2, #bb00ff);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-buttons button::before,
+        #extractOffsetsButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .action-buttons button:hover::before,
+        #extractOffsetsButton:hover::before {
+            left: 100%;
+        }
+
+        .action-buttons button:hover,
+        #extractOffsetsButton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
+        }
+
+        .clear-button,
+        #clearCsButton,
+        #clearImageButton,
+        #clearFontButton {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b) !important;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4) !important;
+        }
+
+        .clear-button:hover,
+        #clearCsButton:hover {
+            background: linear-gradient(135deg, #e53935, #d32f2f) !important;
+        }
+
+        /* Áreas de Resultados */
+
+        .result-container,
+        #csResult {
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid rgba(187, 0, 255, 0.3);
+            text-align: left;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: monospace;
+            white-space: pre-wrap;
+            display: none;
+        }
+
+        .result-actions,
+        #csActions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .result-actions button,
+        #csActions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8a2be2, #bb00ff);
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .result-actions button:hover,
+        #csActions button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Previsualizaciones */
+
+        .file-preview {
+            max-width: 100%;
+            max-height: 150px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(187, 0, 255, 0.3);
+            display: none;
+        }
+
+        .file-info,
+        #csFileInfo,
+        #csStatus {
+            margin-top: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            display: block;
+            text-align: center;
+        }
+
+        #csStatus {
+            color: #4CAF50;
+            font-style: italic;
+        }
+
+        /* Color Picker */
+
+        #colorPicker {
+            width: 100%;
+            height: 60px;
+            border: none;
+            border-radius: 10px;
+            margin: 20px 0;
+            cursor: pointer;
+            background: transparent;
+            box-shadow: 0 0 20px rgba(187, 0, 255, 0.3);
+        }
+
+        #colorPicker::-webkit-color-swatch {
+            border: none;
+            border-radius: 8px;
+        }
+
+        #colorPicker::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        #colorValues {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            border: 1px solid rgba(187, 0, 255, 0.3);
+        }
+
+        #colorValues p {
+            margin: 12px 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #colorValues strong {
+            color: #bb00ff;
+            margin-right: 10px;
+        }
+
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 10px;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .preview-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #8a2be2, #bb00ff);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            word-break: break-all;
+        }
+
+        /* Botones de Copiar */
+
+        .copyButton {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(187, 0, 255, 0.2);
+        }
+
+        .copyButton:hover {
+            background-color: rgba(187, 0, 255, 0.4);
+        }
+
+        .copyButton img {
+            width: 16px;
+            height: 16px;
+            filter: invert(1);
+        }
+
+        /* Inputs ocultos */
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Scrollbar */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#8a2be2, #bb00ff);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bb00ff;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 768px) {
+            .converter-container {
+                padding: 20px 15px;
+            }
+            .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .input-group input {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .input-group button {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 5px;
+            }
+            .action-buttons,
+            .result-actions,
+            #csActions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .action-buttons button,
+            .result-actions button,
+            #csActions button {
+                width: 100%;
+            }
+        }
+
+        /* Animaciones */
+
+        .fade-in {
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <h1>SEFIANE CHEATS</h1>
+
+    <div class="converter-container" style="animation-delay: 0.1s">
+        <h1>Code Converter</h1>
+        <div class="input-group">
+            <input type="text" placeholder="Input" id="inputField">
+            <button id="inputIconButton1" title="Paste"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Paste" style="width: 20px; height: 20px;"></button>
+            <button id="inputIconButton2" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width: 20px; height: 20px;"></button>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="Output" id="outputField" readonly>
+            <button id="outputIconButton3" title="Copy"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy" style="width: 20px; height: 20px;"></button>
+            <button id="outputIconButton4" title="Clear"><img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" alt="Clear" style="width: 20px; height: 20px;"></button>
+        </div>
+        <div class="action-buttons">
+            <button id="aobToByte">Aob to Byte</button>
+            <button id="byteToAob">Byte to Aob</button>
+            <button class="clear-button" id="clearAll">Clear All</button>
+        </div>
+        <div class="dev-info">Dev by MARO</div>
+    </div>
+
+    <div class="converter-container" style="animation-delay: 0.2s">
+        <h1>Image Converter</h1>
+        <div class="dev-info1">Dev by MARO</div>
+
+        <div id="dropArea">
+            <p>Drag or drop an image here</p>
+            <p>or</p>
+            <button id="addImageButton">Upload Image</button>
+            <img id="imagePreview" class="file-preview" alt="Image preview">
+            <div id="imageInfo" class="file-info"></div>
+        </div>
+
+        <div id="imageResult" class="result-container"></div>
+        <div id="imageActions" class="result-actions">
+            <button id="copyImageButton">Copy Byte</button>
+            <button id="downloadImageButton">Download File</button>
+        </div>
+
+        <button id="clearImageButton">Clean Image</button>
+        <button id="convertImageButton">Convert Image to Cpp</button>
+
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    </div>
+
+    <div class="converter-container" style="animation-delay: 0.3s">
+        <h1>Font Converter</h1>
+        <div class="dev-info1">Dev by MARO</div>
+
+        <div id="fontDropArea">
+            <p>Drag or drop font (TTF/OTF)</p>
+            <p>or</p>
+            <button id="addFontButton">Upload Font</button>
+            <div id="fontInfo" class="file-info"></div>
+        </div>
+
+        <div id="fontResult" class="result-container"></div>
+        <div id="fontActions" class="result-actions">
+            <button id="copyFontButton">Copy Byte</button>
+            <button id="downloadFontButton">Download File</button>
+        </div>
+
+        <button id="clearFontButton">Clear File</button>
+        <button id="convertFontButton">Convert Font to Cpp</button>
+
+        <input type="file" id="fontInput" accept=".ttf,.otf" style="display: none;">
+    </div>
+
+
+
+    <div class="converter-container" style="animation-delay: 0.3s">
+        <h1>Dump FF Offset Extractor</h1>
+        <div class="dev-info1">Dev by MARO</div>
+
+        <div id="csDropArea">
+            <p>Drag or drop a .cs file here</p>
+            <p>or</p>
+            <button id="addCsButton">Upload .cs File</button>
+            <div id="csFileInfo"></div>
+        </div>
+
+        <div id="csStatus">No file loaded</div>
+
+        <button id="extractOffsetsButton">Extract Offsets</button>
+        <button id="clearCsButton">Clear File</button>
+
+        <div id="csResult"></div>
+        <div id="csActions">
+            <button id="copyCsButton">Copy Offsets</button>
+            <button id="downloadCsButton">Download File</button>
+        </div>
+
+        <input type="file" id="csInput" accept=".cs" style="display: none;" />
+    </div>
+    <br>
+    <br>
+
+    <div class="converter-container" style="animation-delay: 0.4s">
+        <h1>Color Picker</h1>
+        <div class="dev-info">Dev by MARO</div>
+
+        <input type="color" id="colorPicker" value="#06746">
+
+        <div class="preview-container">
+            <div class="preview-box" id="colorPreviewBox">Preview</div>
+        </div>
+
+        <div id="colorValues">
+            <p>
+                <strong>HEX:</strong>
+                <span id="hexValue">#06746</span>
+                <span class="color-preview" id="hexPreview"></span>
+                <button class="copyButton" data-target="hexValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
+            </p>
+            <p>
+                <strong>RGBA:</strong>
+                <span id="rgbaValue">6, 247, 70, 1</span>
+                <span class="color-preview" id="rgbaPreview"></span>
+                <button class="copyButton" data-target="rgbaValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
+            </p>
+            <p>
+                <strong>Float:</strong>
+                <span id="rgbFloatValue">0.02, 0.97, 0.27</span>
+                <button class="copyButton" data-target="rgbFloatValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
+            </p>
+            <p>
+                <strong>CMYK:</strong>
+                <span id="cmykValue">88%, 0%, 72%, 3%</span>
+                <button class="copyButton" data-target="cmykValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
+            </p>
+            <p>
+                <strong>HSV:</strong>
+                <span id="hsvValue">100°, 68%, 87%</span>
+                <button class="copyButton" data-target="hsvValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
+            </p>
+            <p>
+                <strong>HSL:</strong>
+                <span id="hslValue">100°, 66%, 49%</span>
+                <button class="copyButton" data-target="hslValue"><img src="https://cdn-icons-png.flaticon.com/512/7263/7263713.png" alt="Copy"></button>
+            </p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
