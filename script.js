@@ -783,7 +783,62 @@ const searchSections = [{
             "RightWristJoint": "protected ITransformNode NJDDAPKPILB;",
             "LeftWristJoint": "protected ITransformNode JHIBMHEMJOL;",
             "LeftElbow": "protected ITransformNode JBACCHNMGNJ;",
-            "RightElbow": "protected ITransformNode FGECMMJKFNC;"
+            "RightElbow": "protected ITransformNode FGECMMJKFNC;",
+
+"StaticClass", "0x5C",
+    "MatchStatus", "0x3C",
+    "LocalPlayer", "0x7C",
+    "DictionaryEntities", "0x68",
+
+    None,
+
+    "Player_IsDead", "0x4C",
+    "Player_Name", "protected string OIAJCBLDHKP;",
+    "Player_ShadowBase", "public PlayerNetwork.HHCBNAPCKHF m_ShadowState;",
+    "XPose", "0x78",
+    "AvatarManager", "protected AvatarManager FOGJNGDMJKJ;",
+   "Avatar", "0x94",
+    "Avatar_IsVisible", "0x7C",
+    "Avatar_Data", "0x10",
+    "Avatar_Data_IsTeam", "0x51",
+    "CurrentMatch", "0x50",
+
+    None,
+
+    ("FollowCamera", "protected FollowCamera CHDOHNOEBML;"),
+    ("Camera", "0x14"),
+    ("AimRotation", "private Quaternion <KCFEHMAIINO>k__BackingField;"),
+    ("MainCameraTransform", "public Transform MainCameraTransform;"),
+
+    None,
+
+    "Weapon", "public GPBDEDFKJNA ActiveUISightingWeapon;",
+    "WeaponData", "0x58",
+    "WeaponRecoil", "0xC",
+    "ViewMatrix", "0x98 + 0x24",
+
+    None,
+
+    "Silent1", "private bool <LPEIEILIKGC>k__BackingField;",
+    "Silent2", "private MADMMIICBNN GEGFCFDGGGP;",
+    "Silent3", "0x38",
+    "Silent4", "0x2C",
+
+    None,
+
+    "HeadCollider", "protected Collider HECFNHJKOMN;",
+
+    None,
+
+    "PlayerAttributes", "protected PlayerAttributes JKPFFNEMJIF;",
+    "NoReload", "0x91",
+
+    None,
+
+    "isBot", "public bool IsClientBot;",
+
+
+            
         }
     },
     {
@@ -938,3 +993,4 @@ function downloadCsResult() {
     }, 2000);
 
 }
+
