@@ -824,21 +824,12 @@ const searchSections = [{
     "Silent3", "0x38",
     "Silent4", "0x2C",
 
-    None,
+    
 
     "HeadCollider", "protected Collider HECFNHJKOMN;",
-
-    None,
-
     "PlayerAttributes", "protected PlayerAttributes JKPFFNEMJIF;",
     "NoReload", "0x91",
-
-    None,
-
-    "isBot", "public bool IsClientBot;",
-
-
-            
+    "isBot", "public bool IsClientBot;"            
         }
     },
     {
@@ -993,4 +984,5 @@ function downloadCsResult() {
     }, 2000);
 
 }
+
 
