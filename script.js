@@ -765,200 +765,177 @@ const downloadCsButton = document.getElementById('downloadCsButton');
 
 let csFileContent = "";
 
-// البحث الموسع مع الإضافات الجديدة
-// البحث الموسع والمرتب بشكل أفضل - تم تحديثه بكل الإدخالات الجديدة
+// قاعدة البيانات المرتبة والمحسنة
 const searchSections = [
-    // ────────────────────────────────────────────────
-    //              Bones (العظام / Player Bones)
-    // ────────────────────────────────────────────────
     {
         section: "Bones - Player (Head, Body, Limbs)",
         entries: {
-            "uintptr_t Head":                  "OLCJOGDHJJJ",
-            "uintptr_t Root":                  "MPJBGDJJJMJ",
-            "uintptr_t Chest / Spine":         "HCLMADAFLPD",
-            "uintptr_t Hip / Pelvis":          "OLJBCONDGLO",
-            "uintptr_t Left Ankle":            "BMGCHFGEDDA",
-            "uintptr_t Right Ankle":           "AGHJLIMNPJA",
-            "uintptr_t Left Toe":              "FDMBKCKMODA",
-            "uintptr_t Right Toe":             "CKABHDJDMAP",
-            "uintptr_t Left Shoulder":         "LIBEIIIAGIK",
-            "uintptr_t Right Shoulder":        "HDEPJIBNIIK",
-            "uintptr_t Right Hand":            "NJDDAPKPILB",
-            "uintptr_t Left Hand":             "JHIBMHEMJOL",
-            "uintptr_t Right Forearm":         "JBACCHNMGNJ",
-            "uintptr_t Left Forearm":          "FGECMMJKFNC"
+            "Head":          "OLCJOGDHJJJ",
+            "Root":          "MPJBGDJJJMJ",
+            "Chest / Spine": "HCLMADAFLPD",
+            "Hip / Pelvis":  "OLJBCONDGLO",
+            "Left Ankle":    "BMGCHFGEDDA",
+            "Right Ankle":   "AGHJLIMNPJA",
+            "Left Toe":      "FDMBKCKMODA",
+            "Right Toe":     "CKABHDJDMAP",
+            "Left Shoulder": "LIBEIIIAGIK",
+            "Right Shoulder":"HDEPJIBNIIK",
+            "Right Hand":    "NJDDAPKPILB",
+            "Left Hand":     "JHIBMHEMJOL",
+            "Right Forearm": "JBACCHNMGNJ",
+            "Left Forearm":  "FGECMMJKFNC"
         }
     },
 
-    // ────────────────────────────────────────────────
-    //              Core Game & Match Classes
-    // ────────────────────────────────────────────────
     {
         section: "Match & Game Core",
         entries: {
-            "uintptr_t CurrentMatch":          "m_Match",
-            "uintptr_t MatchStatus":           "LICPHHNNPPF ILGECLEFCCO",
-            "uintptr_t LocalPlayer":           "Player FJPEHEGICBO",
-            "uintptr_t CurrentObserver":       "FNCMBMMKLLI BGGJJKKKFDC"
+            "CurrentMatch":    "m_Match",
+            "MatchStatus":     "LICPHHNNPPF ILGECLEFCCO",
+            "LocalPlayer":     "Player FJPEHEGICBO",
+            "CurrentObserver": "FNCMBMMKLLI BGGJJKKKFDC"
         }
     },
 
-    // ────────────────────────────────────────────────
-    //              Player Status & Information
-    // ────────────────────────────────────────────────
     {
         section: "Player Status & Info",
         entries: {
-            "uintptr_t Player_IsDead":         "bool FHMPKFMFEPM",
-            "uintptr_t Player_Name":           "string OIAJCBLDHKP",
-            "uintptr_t AvatarManager":         "AvatarManager FOGJNGDMJKJ",
-            "uintptr_t FollowCamera":          "FollowCamera CHDOHNOEBML",
-            "uintptr_t AimRotation":           "Quaternion <KCFEHMAIINO>k__BackingField",
-            "uintptr_t XPose":                 "FBCAHNCLMDC ADFIDIPODGK"
+            "Player_IsDead":   "bool FHMPKFMFEPM",
+            "Player_Name":     "string OIAJCBLDHKP",
+            "AvatarManager":   "AvatarManager FOGJNGDMJKJ",
+            "FollowCamera":    "FollowCamera CHDOHNOEBML",
+            "AimRotation":     "Quaternion <KCFEHMAIINO>k__BackingField",
+            "XPose":           "FBCAHNCLMDC ADFIDIPODGK"
         }
     },
 
-    // ────────────────────────────────────────────────
-    //              Weapon & Combat Related
-    // ────────────────────────────────────────────────
     {
         section: "Weapon & Combat",
         entries: {
-            "uintptr_t Weapon":                "GPBDEDFKJNA ActiveUISightingWeapon",
-            "uintptr_t WeaponData":            "int KDKFDCPBIGE",
-            "uintptr_t WeaponRecoil":          "float EFMCDHABKGP",
-            "uintptr_t sAim1":    "bool <LPEIEILIKGC>k__BackingField",
-            "uintptr_t sAim2":                 "MADMMIICBNN GEGFCFDGGGP",
-            "uintptr_t sAim3":                 "0x38",
-            "uintptr_t sAim4":                 "Vector3 NHKKHPLFMNG",
-            "uintptr_t AimbotVisible":         "Collider HECFNHJKOMN",
-            "uintptr_t NoReload":              "ShootNoReload"
+            "Weapon":          "GPBDEDFKJNA ActiveUISightingWeapon",
+            "WeaponData":      "int KDKFDCPBIGE",
+            "WeaponRecoil":    "float EFMCDHABKGP",
+            "sAim1":           "bool <LPEIEILIKGC>k__BackingField",
+            "sAim2":           "MADMMIICBNN GEGFCFDGGGP",
+            "sAim3":           "Vector3 BOGOIAMJFDN",
+            "sAim4":           "Vector3 NHKKHPLFMNG",
+            "AimbotVisible":   "Collider HECFNHJKOMN",
+            "NoReload":        "ShootNoReload"
         }
     },
 
-    // ────────────────────────────────────────────────
-    //              Avatar & Visibility
-    // ────────────────────────────────────────────────
     {
         section: "Avatar & Visibility",
         entries: {
-            "uintptr_t Avatar":                "IUmaAvatar EEAGBKBMBLD",
-            "uintptr_t WeaponData (Alt)":      "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
-            "uintptr_t IntWeaponType":         "OOIPMACFIFL LAEMLAPIAFD"
+            "Avatar":          "IUmaAvatar EEAGBKBMBLD",
+            "WeaponData (Alt)": "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
+            "IntWeaponType":   "OOIPMACFIFL LAEMLAPIAFD"
         }
     },
 
-    // ────────────────────────────────────────────────
-    //              Observer & View Matrix
-    // ────────────────────────────────────────────────
     {
         section: "Observer & View Matrix",
         entries: {
-            "uintptr_t ObserverPlayer":        "Player NJMDHHGDNPJ",
-            "uintptr_t ViewMatrixV1":          "<>f__mg$cache26",
-            "uintptr_t ViewMatrixV2":          "<>f__mg$cache9"
+            "ObserverPlayer":  "Player NJMDHHGDNPJ",
+            "ViewMatrixV1":    "<>f__mg$cache26",
+            "ViewMatrixV2":    "<>f__mg$cache9"
         }
     },
 
-    // ────────────────────────────────────────────────
-    //              Misc / Others
-    // ────────────────────────────────────────────────
     {
         section: "Miscellaneous / Time & Attributes",
         entries: {
-            "uintptr_t GameTimer":             "m_DeltaTime",
-            "uintptr_t FixedDeltaTime":        "m_FixedDeltaTime"
+            "GameTimer":       "m_DeltaTime",
+            "FixedDeltaTime":  "m_FixedDeltaTime"
         }
     }
 ];
-// Event listeners
-addCsButton.addEventListener('click', () => {
-    csInput.click();
-});
 
-csInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    handleCsFile(file);
-});
-
-csDropArea.addEventListener('dragover', (event) => {
-    event.preventDefault();
-    csDropArea.classList.add('dragover');
-});
-
-csDropArea.addEventListener('dragleave', () => {
-    csDropArea.classList.remove('dragover');
-});
-
-csDropArea.addEventListener('drop', (event) => {
-    event.preventDefault();
-    csDropArea.classList.remove('dragover');
-    const file = event.dataTransfer.files[0];
-    handleCsFile(file);
-});
-
-extractOffsetsButton.addEventListener('click', extractOffsets);
-clearCsButton.addEventListener('click', clearCsFile);
-copyCsButton.addEventListener('click', copyCsResult);
-downloadCsButton.addEventListener('click', downloadCsResult);
+// ────────────────────────────────────────────────
+// الدوال المحسنة للبحث والاستخراج
+// ────────────────────────────────────────────────
 
 function handleCsFile(file) {
-    if (file && file.name.endsWith('.cs')) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            csFileContent = e.target.result;
-            csFileInfo.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
-            csFileInfo.style.display = 'block';
-            csStatus.textContent = "File loaded. Ready to extract.";
-            csStatus.style.color = "#4CAF50";
-
-            // Hide previous results
-            csResult.style.display = 'none';
-            csActions.style.display = 'none';
-        };
-        reader.readAsText(file);
-    } else {
-        csStatus.textContent = "Please select a valid .cs file.";
-        csStatus.style.color = "#FF5252";
+    if (!file || !file.name.endsWith('.cs')) {
+        csStatus.textContent = "يرجى اختيار ملف .cs صالح";
+        csStatus.style.color = "#ff5252";
+        return;
     }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        csFileContent = e.target.result;
+        csFileInfo.textContent = `${file.name}  (${(file.size / 1024).toFixed(2)} KB)`;
+        csFileInfo.style.display = 'block';
+        csStatus.textContent = "تم تحميل الملف بنجاح. جاهز للاستخراج";
+        csStatus.style.color = "#4caf50";
+        csResult.style.display = 'none';
+        csActions.style.display = 'none';
+    };
+    reader.onerror = function() {
+        csStatus.textContent = "حدث خطأ أثناء قراءة الملف";
+        csStatus.style.color = "#ff5252";
+    };
+    reader.readAsText(file);
 }
 
 function extractOffsets() {
     if (!csFileContent) {
-        csStatus.textContent = "Please load a .cs file first.";
-        csStatus.style.color = "#FF5252";
+        csStatus.textContent = "لم يتم تحميل أي ملف .cs بعد";
+        csStatus.style.color = "#ff5252";
         return;
     }
 
     const lines = csFileContent.split('\n');
-    let result = "Extracted Offsets from Matches\nBy RataLife\n";
+    let result = "Extracted Offsets & References\nGenerated by SEFIANE CHEATS\n";
+    let foundAny = false;
 
-    for (const section of searchSections) {
-        result += `\n// ====== ${section.section} ======\n\n`;
+    searchSections.forEach(section => {
+        if (Object.keys(section.entries).length === 0) {
+            result += "\n";
+            return;
+        }
 
-        for (const key in section.entries) {
-            const search = section.entries[key];
-            const line = lines.find(l => l.includes(search));
+        result += `\n// ${section.section}\n`;
+        let sectionFound = false;
+
+        Object.entries(section.entries).forEach(([name, searchStr]) => {
+            // بحث أكثر مرونة: يبحث عن السلسلة ككلمة كاملة أو جزء مهم
+            const regex = new RegExp(searchStr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+            const line = lines.find(l => regex.test(l));
 
             if (line) {
-                const match = line.match(/\/\/\s*(0x[0-9a-fA-F]+)/);
-                if (match) {
-                    result += `${key} = ${match[1]}\n`;
+                // محاولة استخراج offset من التعليق // 0x...
+                let offset = "غير موجود";
+                const offsetMatch = line.match(/\/\/\s*(0x[0-9a-fA-F]+)/i);
+                if (offsetMatch) {
+                    offset = offsetMatch[1];
                 } else {
-                    result += `${key}: Offset not found\n`;
+                    // محاولة استخراج أرقام سداسية أخرى
+                    const hexMatch = line.match(/0x[0-9a-fA-F]+/i);
+                    if (hexMatch) offset = hexMatch[0];
                 }
+
+                result += `${name.padEnd(24)} → ${offset}\n`;
+                foundAny = true;
+                sectionFound = true;
             } else {
-                result += `${key}: Line not found\n`;
+                result += `${name.padEnd(24)} → غير موجود في الملف\n`;
             }
-        }
+        });
+
+        if (sectionFound) result += "\n";
+    });
+
+    if (!foundAny) {
+        result += "\nلم يتم العثور على أي من العناصر المطلوبة في الملف.";
     }
 
     csResult.textContent = result;
     csResult.style.display = 'block';
     csActions.style.display = 'flex';
-    csStatus.textContent = "Offsets extracted successfully.";
-    csStatus.style.color = "#4CAF50";
+    csStatus.textContent = "تم استخراج البيانات بنجاح";
+    csStatus.style.color = "#4caf50";
 }
 
 function clearCsFile() {
@@ -967,46 +944,49 @@ function clearCsFile() {
     csFileInfo.style.display = 'none';
     csResult.style.display = 'none';
     csActions.style.display = 'none';
-    csStatus.textContent = "File cleared.";
+    csStatus.textContent = "تم مسح الملف";
     csStatus.style.color = "#ffffff";
 }
 
 function copyCsResult() {
     if (!csResult.textContent) return;
-
     navigator.clipboard.writeText(csResult.textContent)
         .then(() => {
-            copyCsButton.textContent = "Copied!";
-            setTimeout(() => {
-                copyCsButton.textContent = "Copy Offsets";
-            }, 2000);
+            copyCsButton.textContent = "تم النسخ!";
+            setTimeout(() => copyCsButton.textContent = "Copy Offsets", 2000);
         })
         .catch(() => {
-            alert("Failed to copy to clipboard");
+            alert("فشل النسخ إلى الحافظة");
         });
 }
 
 function downloadCsResult() {
     if (!csResult.textContent) return;
-
-    const blob = new Blob([csResult.textContent], {
-        type: 'text/plain'
-    });
+    const blob = new Blob([csResult.textContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Offsets SEFIANE CHEAT.txt';
+    a.download = 'SEFIANE_Offsets_Extracted.txt';
     a.click();
     URL.revokeObjectURL(url);
-
-    downloadCsButton.textContent = "Downloaded!";
-    setTimeout(() => {
-        downloadCsButton.textContent = "Download File";
-    }, 2000);
-
+    downloadCsButton.textContent = "تم التحميل!";
+    setTimeout(() => downloadCsButton.textContent = "Download File", 2000);
 }
 
-
+// ربط الأحداث (يجب أن تكون موجودة بعد تعريف الدوال)
+addCsButton.addEventListener('click', () => csInput.click());
+csInput.addEventListener('change', (e) => handleCsFile(e.target.files[0]));
+csDropArea.addEventListener('dragover', e => { e.preventDefault(); csDropArea.classList.add('dragover'); });
+csDropArea.addEventListener('dragleave', () => csDropArea.classList.remove('dragover'));
+csDropArea.addEventListener('drop', e => {
+    e.preventDefault();
+    csDropArea.classList.remove('dragover');
+    handleCsFile(e.dataTransfer.files[0]);
+});
+extractOffsetsButton.addEventListener('click', extractOffsets);
+clearCsButton.addEventListener('click', clearCsFile);
+copyCsButton.addEventListener('click', copyCsResult);
+downloadCsButton.addEventListener('click', downloadCsResult);
 
 
 
