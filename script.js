@@ -766,137 +766,109 @@ const downloadCsButton = document.getElementById('downloadCsButton');
 let csFileContent = "";
 
 // البحث الموسع مع الإضافات الجديدة
+// البحث الموسع والمرتب بشكل أفضل - تم تحديثه بكل الإدخالات الجديدة
 const searchSections = [
+    // ────────────────────────────────────────────────
+    //              Bones (العظام / Player Bones)
+    // ────────────────────────────────────────────────
     {
-        section: "Bones - C#",
+        section: "Bones - Player (Head, Body, Limbs)",
         entries: {
-            "Head": "protected ITransformNode OLCJOGDHJJJ;",
-            "Root": "protected ITransformNode MPJBGDJJJMJ;",
-            "Spine": "protected ITransformNode HCLMADAFLPD;",
-            "Hip": "protected ITransformNode CENAIGAFGAG;",
-            "RightCalf": "protected ITransformNode JPBJIMCDBHN;",
-            "LeftCalf": "protected ITransformNode BMGCHFGEDDA;",
-            "RightFoot": "protected ITransformNode AGHJLIMNPJA;",
-            "LeftFoot": "protected ITransformNode FDMBKCKMODA;",
-            "LeftWrist": "protected ITransformNode GCMICMFEAKI;",
-            "RightWrist": "protected ITransformNode CKABHDJDMAP;",
-            "LeftHand": "protected ITransformNode KOCDBPLKMBI;",
-            "LeftSholder": "protected ITransformNode LIBEIIIAGIK;",
-            "RightSholder": "protected ITransformNode HDEPJIBNIIK;",
-            "RightWristJoint": "protected ITransformNode NJDDAPKPILB;",
-            "LeftWristJoint": "protected ITransformNode JHIBMHEMJOL;",
-            "LeftElbow": "protected ITransformNode JBACCHNMGNJ;",
-            "RightElbow": "protected ITransformNode FGECMMJKFNC;"
-        }
-    },
-    {
-        section: "Bones - C++",
-        entries: {
-            "uintptr_t Head": "protected ITransformNode OLCJOGDHJJJ;",
-            "uintptr_t Root": "protected ITransformNode MPJBGDJJJMJ;",
-            "uintptr_t Cuello": "protected ITransformNode HCLMADAFLPD;",
-            "uintptr_t Cadera": "protected ITransformNode OLJBCONDGLO;",
-            "uintptr_t HombroDerecho": "protected ITransformNode HDEPJIBNIIK;",
-            "uintptr_t HombroIzquierdo": "protected ITransformNode LIBEIIIAGIK;",
-            "uintptr_t CodoDerecho": "protected ITransformNode JBACCHNMGNJ;",
-            "uintptr_t CodoIzquierdo": "protected ITransformNode FGECMMJKFNC;",
-            "uintptr_t ManoDerecha": "protected ITransformNode GCMICMFEAKI;",
-            "uintptr_t ManoIzquierda": "protected ITransformNode KOCDBPLKMBI;",
-            "uintptr_t PieDerecho": "protected ITransformNode CKABHDJDMAP;",
-            "uintptr_t PieIzquierdo": "protected ITransformNode FDMBKCKMODA;"
+            "Head":                  "OLCJOGDHJJJ",
+            "Root":                  "MPJBGDJJJMJ",
+            "Chest / Spine":         "HCLMADAFLPD",
+            "Hip / Pelvis":          "OLJBCONDGLO",
+            "Left Ankle":            "BMGCHFGEDDA",
+            "Right Ankle":           "AGHJLIMNPJA",
+            "Left Toe":              "FDMBKCKMODA",
+            "Right Toe":             "CKABHDJDMAP",
+            "Left Shoulder":         "LIBEIIIAGIK",
+            "Right Shoulder":        "HDEPJIBNIIK",
+            "Right Hand":            "NJDDAPKPILB",
+            "Left Hand":             "JHIBMHEMJOL",
+            "Right Forearm":         "JBACCHNMGNJ",
+            "Left Forearm":          "FGECMMJKFNC"
         }
     },
 
     // ────────────────────────────────────────────────
-    // الإضافات الجديدة التي طلبت إضافتها
+    //              Core Game & Match Classes
     // ────────────────────────────────────────────────
     {
-        section: "Player & Game Core",
+        section: "Match & Game Core",
         entries: {
-            "StaticClass": "0x5C",
-            "MatchStatus": "0x3C",
-            "LocalPlayer": "0x7C",
-            "DictionaryEntities": "0x68"
+            "CurrentMatch":          "m_Match",
+            "MatchStatus":           "LICPHHNNPPF ILGECLEFCCO",
+            "LocalPlayer":           "Player FJPEHEGICBO",
+            "CurrentObserver":       "FNCMBMMKLLI BGGJJKKKFDC"
         }
     },
 
-    // فاصل (None)
-    { section: "Separator", entries: {} },
-
+    // ────────────────────────────────────────────────
+    //              Player Status & Information
+    // ────────────────────────────────────────────────
     {
         section: "Player Status & Info",
         entries: {
-            "Player_IsDead": "0x4C",
-            "Player_Name": "protected string OIAJCBLDHKP;",
-            "Player_ShadowBase": "public PlayerNetwork.HHCBNAPCKHF m_ShadowState;",
-            "XPose": "0x78",
-            "AvatarManager": "protected AvatarManager FOGJNGDMJKJ;",
-            "Avatar": "0x94",
-            "Avatar_IsVisible": "0x7C",
-            "Avatar_Data": "0x10",
-            "Avatar_Data_IsTeam": "0x51",
-            "CurrentMatch": "0x50"
+            "Player_IsDead":         "bool FHMPKFMFEPM",
+            "Player_Name":           "string OIAJCBLDHKP",
+            "AvatarManager":         "AvatarManager FOGJNGDMJKJ",
+            "FollowCamera":          "FollowCamera CHDOHNOEBML",
+            "AimRotation":           "Quaternion <KCFEHMAIINO>k__BackingField",
+            "XPose":                 "FBCAHNCLMDC ADFIDIPODGK"
         }
     },
 
-    // فاصل
-    { section: "Separator", entries: {} },
-
+    // ────────────────────────────────────────────────
+    //              Weapon & Combat Related
+    // ────────────────────────────────────────────────
     {
-        section: "Camera & View",
+        section: "Weapon & Combat",
         entries: {
-            "FollowCamera": "protected FollowCamera CHDOHNOEBML;",
-            "Camera": "0x14",
-            "AimRotation": "private Quaternion <KCFEHMAIINO>k__BackingField;",
-            "MainCameraTransform": "public Transform MainCameraTransform;"
+            "Weapon":                "GPBDEDFKJNA ActiveUISightingWeapon",
+            "WeaponData":            "int KDKFDCPBIGE",
+            "WeaponRecoil":          "float EFMCDHABKGP",
+            "sAim1 (Silent Aim)":    "bool <LPEIEILIKGC>k__BackingField",
+            "sAim2":                 "MADMMIICBNN GEGFCFDGGGP",
+            "sAim3":                 "Vector3 BOGOIAMJFDN",
+            "sAim4":                 "Vector3 NHKKHPLFMNG",
+            "AimbotVisible":         "Collider HECFNHJKOMN",
+            "NoReload":              "ShootNoReload"
         }
     },
 
-    // فاصل
-    { section: "Separator", entries: {} },
-
+    // ────────────────────────────────────────────────
+    //              Avatar & Visibility
+    // ────────────────────────────────────────────────
     {
-        section: "Weapon & Recoil",
+        section: "Avatar & Visibility",
         entries: {
-            "Weapon": "public GPBDEDFKJNA ActiveUISightingWeapon;",
-            "WeaponData": "0x58",
-            "WeaponRecoil": "0xC",
-            "ViewMatrix": "0x98 + 0x24"
+            "Avatar":                "IUmaAvatar EEAGBKBMBLD",
+            "WeaponData (Alt)":      "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
+            "IntWeaponType":         "OOIPMACFIFL LAEMLAPIAFD"
         }
     },
 
-    // فاصل
-    { section: "Separator", entries: {} },
-
+    // ────────────────────────────────────────────────
+    //              Observer & View Matrix
+    // ────────────────────────────────────────────────
     {
-        section: "Silent Aim",
+        section: "Observer & View Matrix",
         entries: {
-            "Silent1": "private bool <LPEIEILIKGC>k__BackingField;",
-            "Silent2": "private MADMMIICBNN GEGFCFDGGGP;",
-            "Silent3": "0x38",
-            "Silent4": "0x2C"
+            "ObserverPlayer":        "Player NJMDHHGDNPJ",
+            "ViewMatrixV1":          "<>f__mg$cache26",
+            "ViewMatrixV2":          "<>f__mg$cache9"
         }
     },
 
-    // فاصل
-    { section: "Separator", entries: {} },
-
+    // ────────────────────────────────────────────────
+    //              Misc / Others
+    // ────────────────────────────────────────────────
     {
-        section: "Colliders & Attributes",
+        section: "Miscellaneous / Time & Attributes",
         entries: {
-            "HeadCollider": "protected Collider HECFNHJKOMN;",
-            "PlayerAttributes": "protected PlayerAttributes JKPFFNEMJIF;",
-            "NoReload": "0x91"
-        }
-    },
-
-    // فاصل
-    { section: "Separator", entries: {} },
-
-    {
-        section: "Bot Detection",
-        entries: {
-            "isBot": "public bool IsClientBot;"
+            "GameTimer":             "m_DeltaTime",
+            "FixedDeltaTime":        "m_FixedDeltaTime"
         }
     }
 ];
@@ -1033,6 +1005,7 @@ function downloadCsResult() {
     }, 2000);
 
 }
+
 
 
 
