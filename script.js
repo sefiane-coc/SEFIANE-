@@ -765,119 +765,96 @@ const downloadCsButton = document.getElementById('downloadCsButton');
 
 let csFileContent = "";
 
-// قاعدة البيانات المرتبة والمحسنة
+// قاعدة البيانات المحدثة (أضفت PlayerAttributes)
 const searchSections = [
     {
         section: "Bones - Player (Head, Body, Limbs)",
         entries: {
-            "Head":          "OLCJOGDHJJJ",
-            "Root":          "MPJBGDJJJMJ",
-            "Chest / Spine": "HCLMADAFLPD",
-            "Hip / Pelvis":  "OLJBCONDGLO",
-            "Left Ankle":    "BMGCHFGEDDA",
-            "Right Ankle":   "AGHJLIMNPJA",
-            "Left Toe":      "FDMBKCKMODA",
-            "Right Toe":     "CKABHDJDMAP",
-            "Left Shoulder": "LIBEIIIAGIK",
-            "Right Shoulder":"HDEPJIBNIIK",
-            "Right Hand":    "NJDDAPKPILB",
-            "Left Hand":     "JHIBMHEMJOL",
-            "Right Forearm": "JBACCHNMGNJ",
-            "Left Forearm":  "FGECMMJKFNC"
+            "Head":                  "OLCJOGDHJJJ",
+            "Root":                  "MPJBGDJJJMJ",
+            "Chest / Spine":         "HCLMADAFLPD",
+            "Hip / Pelvis":          "OLJBCONDGLO",
+            "Left Ankle":            "BMGCHFGEDDA",
+            "Right Ankle":           "AGHJLIMNPJA",
+            "Left Toe":              "FDMBKCKMODA",
+            "Right Toe":             "CKABHDJDMAP",
+            "Left Shoulder":         "LIBEIIIAGIK",
+            "Right Shoulder":        "HDEPJIBNIIK",
+            "Right Hand":            "NJDDAPKPILB",
+            "Left Hand":             "JHIBMHEMJOL",
+            "Right Forearm":         "JBACCHNMGNJ",
+            "Left Forearm":          "FGECMMJKFNC"
         }
     },
 
     {
         section: "Match & Game Core",
         entries: {
-            "CurrentMatch":    "m_Match",
-            "MatchStatus":     "LICPHHNNPPF ILGECLEFCCO",
-            "LocalPlayer":     "Player FJPEHEGICBO",
-            "CurrentObserver": "FNCMBMMKLLI BGGJJKKKFDC"
+            "CurrentMatch":          "m_Match",
+            "MatchStatus":           "LICPHHNNPPF ILGECLEFCCO",
+            "LocalPlayer":           "Player FJPEHEGICBO",
+            "CurrentObserver":       "FNCMBMMKLLI BGGJJKKKFDC"
         }
     },
 
     {
         section: "Player Status & Info",
         entries: {
-            "Player_IsDead":   "bool FHMPKFMFEPM",
-            "Player_Name":     "string OIAJCBLDHKP",
-            "AvatarManager":   "AvatarManager FOGJNGDMJKJ",
-            "FollowCamera":    "FollowCamera CHDOHNOEBML",
-            "AimRotation":     "Quaternion <KCFEHMAIINO>k__BackingField",
-            "XPose":           "FBCAHNCLMDC ADFIDIPODGK"
+            "Player_IsDead":         "bool FHMPKFMFEPM",
+            "Player_Name":           "string OIAJCBLDHKP",
+            "AvatarManager":         "AvatarManager FOGJNGDMJKJ",
+            "FollowCamera":          "FollowCamera CHDOHNOEBML",
+            "AimRotation":           "Quaternion <KCFEHMAIINO>k__BackingField",
+            "XPose":                 "FBCAHNCLMDC ADFIDIPODGK"
         }
     },
 
     {
         section: "Weapon & Combat",
         entries: {
-            "Weapon":          "GPBDEDFKJNA ActiveUISightingWeapon",
-            "WeaponData":      "int KDKFDCPBIGE",
-            "WeaponRecoil":    "float EFMCDHABKGP",
-            "sAim1":           "bool <LPEIEILIKGC>k__BackingField",
-            "sAim2":           "MADMMIICBNN GEGFCFDGGGP",
-            "sAim3":           "Vector3 BOGOIAMJFDN",
-            "sAim4":           "Vector3 NHKKHPLFMNG",
-            "AimbotVisible":   "Collider HECFNHJKOMN",
-            "NoReload":        "ShootNoReload"
+            "Weapon":                "GPBDEDFKJNA ActiveUISightingWeapon",
+            "WeaponData":            "int KDKFDCPBIGE",
+            "WeaponRecoil":          "float EFMCDHABKGP",
+            "sAim1":                 "bool <LPEIEILIKGC>k__BackingField",
+            "sAim2":                 "MADMMIICBNN GEGFCFDGGGP",
+            "sAim3":                 "Vector3 BOGOIAMJFDN",
+            "sAim4":                 "Vector3 NHKKHPLFMNG",
+            "AimbotVisible":         "Collider HECFNHJKOMN",
+            "NoReload":              "ShootNoReload"
         }
     },
 
     {
         section: "Avatar & Visibility",
         entries: {
-            "Avatar":          "IUmaAvatar EEAGBKBMBLD",
-            "WeaponData (Alt)": "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
-            "IntWeaponType":   "OOIPMACFIFL LAEMLAPIAFD"
+            "Avatar":                "IUmaAvatar EEAGBKBMBLD",
+            "WeaponData (Alt)":      "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
+            "IntWeaponType":         "OOIPMACFIFL LAEMLAPIAFD"
         }
     },
 
     {
         section: "Observer & View Matrix",
         entries: {
-            "ObserverPlayer":  "Player NJMDHHGDNPJ",
-            "ViewMatrixV1":    "<>f__mg$cache26",
-            "ViewMatrixV2":    "<>f__mg$cache9"
+            "ObserverPlayer":        "Player NJMDHHGDNPJ",
+            "ViewMatrixV1":          "<>f__mg$cache26",
+            "ViewMatrixV2":          "<>f__mg$cache9"
         }
     },
 
     {
         section: "Miscellaneous / Time & Attributes",
         entries: {
-            "GameTimer":       "m_DeltaTime",
-            "FixedDeltaTime":  "m_FixedDeltaTime"
+            "GameTimer":             "m_DeltaTime",
+            "FixedDeltaTime":        "m_FixedDeltaTime",
+            "PlayerAttributes":      "protected PlayerAttributes JKPFFNEMJIF;"   // ← الإضافة الجديدة هنا
         }
     }
 ];
 
 // ────────────────────────────────────────────────
-// الدوال المحسنة للبحث والاستخراج
+// دالة استخراج الـ Offsets مع التنسيق المطلوب: uintptr_t Name = 0xXXXX;
 // ────────────────────────────────────────────────
-
-function handleCsFile(file) {
-    if (!file || !file.name.endsWith('.cs')) {
-        csStatus.textContent = "يرجى اختيار ملف .cs صالح";
-        csStatus.style.color = "#ff5252";
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        csFileContent = e.target.result;
-        csFileInfo.textContent = `${file.name}  (${(file.size / 1024).toFixed(2)} KB)`;
-        csFileInfo.style.display = 'block';
-        csStatus.textContent = "تم تحميل الملف بنجاح. جاهز للاستخراج";
-        csStatus.style.color = "#4caf50";
-        csResult.style.display = 'none';
-        csActions.style.display = 'none';
-    };
-    reader.onerror = function() {
-        csStatus.textContent = "حدث خطأ أثناء قراءة الملف";
-        csStatus.style.color = "#ff5252";
-    };
-    reader.readAsText(file);
-}
 
 function extractOffsets() {
     if (!csFileContent) {
@@ -897,38 +874,40 @@ function extractOffsets() {
         }
 
         result += `\n// ${section.section}\n`;
-        let sectionFound = false;
 
         Object.entries(section.entries).forEach(([name, searchStr]) => {
-            // بحث أكثر مرونة: يبحث عن السلسلة ككلمة كاملة أو جزء مهم
+            // بحث مرن باستخدام RegExp (يتجاهل المسافات الزائدة والحساسية لحالة الأحرف)
             const regex = new RegExp(searchStr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-            const line = lines.find(l => regex.test(l));
+            const line = lines.find(l => regex.test(l.trim()));
+
+            let offset = "غير موجود";
 
             if (line) {
-                // محاولة استخراج offset من التعليق // 0x...
-                let offset = "غير موجود";
-                const offsetMatch = line.match(/\/\/\s*(0x[0-9a-fA-F]+)/i);
-                if (offsetMatch) {
-                    offset = offsetMatch[1];
+                // أولوية 1: التعليق المباشر // 0x...
+                const commentMatch = line.match(/\/\/\s*(0x[0-9a-fA-F]+)/i);
+                if (commentMatch) {
+                    offset = commentMatch[1];
                 } else {
-                    // محاولة استخراج أرقام سداسية أخرى
+                    // أولوية 2: أي قيمة سداسية في السطر
                     const hexMatch = line.match(/0x[0-9a-fA-F]+/i);
-                    if (hexMatch) offset = hexMatch[0];
+                    if (hexMatch) {
+                        offset = hexMatch[0];
+                    }
                 }
 
-                result += `${name.padEnd(24)} → ${offset}\n`;
+                // التنسيق المطلوب: uintptr_t Name = offset;
+                result += `uintptr_t ${name} = ${offset};\n`;
                 foundAny = true;
-                sectionFound = true;
             } else {
-                result += `${name.padEnd(24)} → غير موجود في الملف\n`;
+                result += `uintptr_t ${name} = غير موجود;\n`;
             }
         });
 
-        if (sectionFound) result += "\n";
+        result += "\n";
     });
 
     if (!foundAny) {
-        result += "\nلم يتم العثور على أي من العناصر المطلوبة في الملف.";
+        result += "\nلم يتم العثور على أي من العناصر المطلوبة في الملف.\n";
     }
 
     csResult.textContent = result;
@@ -936,6 +915,30 @@ function extractOffsets() {
     csActions.style.display = 'flex';
     csStatus.textContent = "تم استخراج البيانات بنجاح";
     csStatus.style.color = "#4caf50";
+}
+
+// ────────────────────────────────────────────────
+// باقي الدوال (بدون تغيير كبير)
+// ────────────────────────────────────────────────
+
+function handleCsFile(file) {
+    if (!file || !file.name.endsWith('.cs')) {
+        csStatus.textContent = "يرجى اختيار ملف .cs صالح";
+        csStatus.style.color = "#ff5252";
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        csFileContent = e.target.result;
+        csFileInfo.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+        csFileInfo.style.display = 'block';
+        csStatus.textContent = "تم تحميل الملف بنجاح. جاهز للاستخراج";
+        csStatus.style.color = "#4caf50";
+        csResult.style.display = 'none';
+        csActions.style.display = 'none';
+    };
+    reader.readAsText(file);
 }
 
 function clearCsFile() {
@@ -955,9 +958,7 @@ function copyCsResult() {
             copyCsButton.textContent = "تم النسخ!";
             setTimeout(() => copyCsButton.textContent = "Copy Offsets", 2000);
         })
-        .catch(() => {
-            alert("فشل النسخ إلى الحافظة");
-        });
+        .catch(() => alert("فشل النسخ إلى الحافظة"));
 }
 
 function downloadCsResult() {
@@ -973,7 +974,7 @@ function downloadCsResult() {
     setTimeout(() => downloadCsButton.textContent = "Download File", 2000);
 }
 
-// ربط الأحداث (يجب أن تكون موجودة بعد تعريف الدوال)
+// ربط الأحداث
 addCsButton.addEventListener('click', () => csInput.click());
 csInput.addEventListener('change', (e) => handleCsFile(e.target.files[0]));
 csDropArea.addEventListener('dragover', e => { e.preventDefault(); csDropArea.classList.add('dragover'); });
@@ -987,6 +988,3 @@ extractOffsetsButton.addEventListener('click', extractOffsets);
 clearCsButton.addEventListener('click', clearCsFile);
 copyCsButton.addEventListener('click', copyCsResult);
 downloadCsButton.addEventListener('click', downloadCsResult);
-
-
-
