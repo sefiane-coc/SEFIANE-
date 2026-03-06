@@ -817,7 +817,7 @@ const searchSections = [
             "WeaponRecoil":          "float EFMCDHABKGP",
             "sAim1":                 "bool <LPEIEILIKGC>k__BackingField",
             "sAim2":                 "MADMMIICBNN GEGFCFDGGGP",
-            "sAim3":                 "Vector3 BOGOIAMJFDN",
+            "sAim3":                 "0x38",
             "sAim4":                 "Vector3 NHKKHPLFMNG",
             "AimbotVisible":         "Collider HECFNHJKOMN",
             "NoReload":              "ShootNoReload"
@@ -828,7 +828,7 @@ const searchSections = [
         section: "Avatar & Visibility",
         entries: {
             "Avatar":                "IUmaAvatar EEAGBKBMBLD",
-            "WeaponData (Alt)":      "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
+            "WeaponData":      "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
             "IntWeaponType":         "OOIPMACFIFL LAEMLAPIAFD"
         }
     },
@@ -988,3 +988,4 @@ extractOffsetsButton.addEventListener('click', extractOffsets);
 clearCsButton.addEventListener('click', clearCsFile);
 copyCsButton.addEventListener('click', copyCsResult);
 downloadCsButton.addEventListener('click', downloadCsResult);
+
