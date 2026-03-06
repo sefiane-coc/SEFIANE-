@@ -764,11 +764,13 @@ const copyCsButton = document.getElementById('copyCsButton');
 const downloadCsButton = document.getElementById('downloadCsButton');
 
 let csFileContent = "";
-const searchSections = [{
+
+// البحث الموسع مع الإضافات الجديدة
+const searchSections = [
+    {
         section: "Bones - C#",
         entries: {
             "Head": "protected ITransformNode OLCJOGDHJJJ;",
-            "Silent1", "private bool <LPEIEILIKGC>k__BackingField;",
             "Root": "protected ITransformNode MPJBGDJJJMJ;",
             "Spine": "protected ITransformNode HCLMADAFLPD;",
             "Hip": "protected ITransformNode CENAIGAFGAG;",
@@ -803,9 +805,101 @@ const searchSections = [{
             "uintptr_t PieDerecho": "protected ITransformNode CKABHDJDMAP;",
             "uintptr_t PieIzquierdo": "protected ITransformNode FDMBKCKMODA;"
         }
+    },
+
+    // ────────────────────────────────────────────────
+    // الإضافات الجديدة التي طلبت إضافتها
+    // ────────────────────────────────────────────────
+    {
+        section: "Player & Game Core",
+        entries: {
+            "StaticClass": "0x5C",
+            "MatchStatus": "0x3C",
+            "LocalPlayer": "0x7C",
+            "DictionaryEntities": "0x68"
+        }
+    },
+
+    // فاصل (None)
+    { section: "Separator", entries: {} },
+
+    {
+        section: "Player Status & Info",
+        entries: {
+            "Player_IsDead": "0x4C",
+            "Player_Name": "protected string OIAJCBLDHKP;",
+            "Player_ShadowBase": "public PlayerNetwork.HHCBNAPCKHF m_ShadowState;",
+            "XPose": "0x78",
+            "AvatarManager": "protected AvatarManager FOGJNGDMJKJ;",
+            "Avatar": "0x94",
+            "Avatar_IsVisible": "0x7C",
+            "Avatar_Data": "0x10",
+            "Avatar_Data_IsTeam": "0x51",
+            "CurrentMatch": "0x50"
+        }
+    },
+
+    // فاصل
+    { section: "Separator", entries: {} },
+
+    {
+        section: "Camera & View",
+        entries: {
+            "FollowCamera": "protected FollowCamera CHDOHNOEBML;",
+            "Camera": "0x14",
+            "AimRotation": "private Quaternion <KCFEHMAIINO>k__BackingField;",
+            "MainCameraTransform": "public Transform MainCameraTransform;"
+        }
+    },
+
+    // فاصل
+    { section: "Separator", entries: {} },
+
+    {
+        section: "Weapon & Recoil",
+        entries: {
+            "Weapon": "public GPBDEDFKJNA ActiveUISightingWeapon;",
+            "WeaponData": "0x58",
+            "WeaponRecoil": "0xC",
+            "ViewMatrix": "0x98 + 0x24"
+        }
+    },
+
+    // فاصل
+    { section: "Separator", entries: {} },
+
+    {
+        section: "Silent Aim",
+        entries: {
+            "Silent1": "private bool <LPEIEILIKGC>k__BackingField;",
+            "Silent2": "private MADMMIICBNN GEGFCFDGGGP;",
+            "Silent3": "0x38",
+            "Silent4": "0x2C"
+        }
+    },
+
+    // فاصل
+    { section: "Separator", entries: {} },
+
+    {
+        section: "Colliders & Attributes",
+        entries: {
+            "HeadCollider": "protected Collider HECFNHJKOMN;",
+            "PlayerAttributes": "protected PlayerAttributes JKPFFNEMJIF;",
+            "NoReload": "0x91"
+        }
+    },
+
+    // فاصل
+    { section: "Separator", entries: {} },
+
+    {
+        section: "Bot Detection",
+        entries: {
+            "isBot": "public bool IsClientBot;"
+        }
     }
 ];
-
 // Event listeners
 addCsButton.addEventListener('click', () => {
     csInput.click();
@@ -939,5 +1033,6 @@ function downloadCsResult() {
     }, 2000);
 
 }
+
 
 
