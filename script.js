@@ -774,20 +774,20 @@ const searchSections = [
     {
         section: "Bones - Player (Head, Body, Limbs)",
         entries: {
-            "Head":                  "OLCJOGDHJJJ",
-            "Root":                  "MPJBGDJJJMJ",
-            "Chest / Spine":         "HCLMADAFLPD",
-            "Hip / Pelvis":          "OLJBCONDGLO",
-            "Left Ankle":            "BMGCHFGEDDA",
-            "Right Ankle":           "AGHJLIMNPJA",
-            "Left Toe":              "FDMBKCKMODA",
-            "Right Toe":             "CKABHDJDMAP",
-            "Left Shoulder":         "LIBEIIIAGIK",
-            "Right Shoulder":        "HDEPJIBNIIK",
-            "Right Hand":            "NJDDAPKPILB",
-            "Left Hand":             "JHIBMHEMJOL",
-            "Right Forearm":         "JBACCHNMGNJ",
-            "Left Forearm":          "FGECMMJKFNC"
+            "uintptr_t Head":                  "OLCJOGDHJJJ",
+            "uintptr_t Root":                  "MPJBGDJJJMJ",
+            "uintptr_t Chest / Spine":         "HCLMADAFLPD",
+            "uintptr_t Hip / Pelvis":          "OLJBCONDGLO",
+            "uintptr_t Left Ankle":            "BMGCHFGEDDA",
+            "uintptr_t Right Ankle":           "AGHJLIMNPJA",
+            "uintptr_t Left Toe":              "FDMBKCKMODA",
+            "uintptr_t Right Toe":             "CKABHDJDMAP",
+            "uintptr_t Left Shoulder":         "LIBEIIIAGIK",
+            "uintptr_t Right Shoulder":        "HDEPJIBNIIK",
+            "uintptr_t Right Hand":            "NJDDAPKPILB",
+            "uintptr_t Left Hand":             "JHIBMHEMJOL",
+            "uintptr_t Right Forearm":         "JBACCHNMGNJ",
+            "uintptr_t Left Forearm":          "FGECMMJKFNC"
         }
     },
 
@@ -797,10 +797,10 @@ const searchSections = [
     {
         section: "Match & Game Core",
         entries: {
-            "CurrentMatch":          "m_Match",
-            "MatchStatus":           "LICPHHNNPPF ILGECLEFCCO",
-            "LocalPlayer":           "Player FJPEHEGICBO",
-            "CurrentObserver":       "FNCMBMMKLLI BGGJJKKKFDC"
+            "uintptr_t CurrentMatch":          "m_Match",
+            "uintptr_t MatchStatus":           "LICPHHNNPPF ILGECLEFCCO",
+            "uintptr_t LocalPlayer":           "Player FJPEHEGICBO",
+            "uintptr_t CurrentObserver":       "FNCMBMMKLLI BGGJJKKKFDC"
         }
     },
 
@@ -810,12 +810,12 @@ const searchSections = [
     {
         section: "Player Status & Info",
         entries: {
-            "Player_IsDead":         "bool FHMPKFMFEPM",
-            "Player_Name":           "string OIAJCBLDHKP",
-            "AvatarManager":         "AvatarManager FOGJNGDMJKJ",
-            "FollowCamera":          "FollowCamera CHDOHNOEBML",
-            "AimRotation":           "Quaternion <KCFEHMAIINO>k__BackingField",
-            "XPose":                 "FBCAHNCLMDC ADFIDIPODGK"
+            "uintptr_t Player_IsDead":         "bool FHMPKFMFEPM",
+            "uintptr_t Player_Name":           "string OIAJCBLDHKP",
+            "uintptr_t AvatarManager":         "AvatarManager FOGJNGDMJKJ",
+            "uintptr_t FollowCamera":          "FollowCamera CHDOHNOEBML",
+            "uintptr_t AimRotation":           "Quaternion <KCFEHMAIINO>k__BackingField",
+            "uintptr_t XPose":                 "FBCAHNCLMDC ADFIDIPODGK"
         }
     },
 
@@ -825,15 +825,15 @@ const searchSections = [
     {
         section: "Weapon & Combat",
         entries: {
-            "Weapon":                "GPBDEDFKJNA ActiveUISightingWeapon",
-            "WeaponData":            "int KDKFDCPBIGE",
-            "WeaponRecoil":          "float EFMCDHABKGP",
-            "sAim1 (Silent Aim)":    "bool <LPEIEILIKGC>k__BackingField",
-            "sAim2":                 "MADMMIICBNN GEGFCFDGGGP",
-            "sAim3":                 "Vector3 BOGOIAMJFDN",
-            "sAim4":                 "Vector3 NHKKHPLFMNG",
-            "AimbotVisible":         "Collider HECFNHJKOMN",
-            "NoReload":              "ShootNoReload"
+            "uintptr_t Weapon":                "GPBDEDFKJNA ActiveUISightingWeapon",
+            "uintptr_t WeaponData":            "int KDKFDCPBIGE",
+            "uintptr_t WeaponRecoil":          "float EFMCDHABKGP",
+            "uintptr_t sAim1":    "bool <LPEIEILIKGC>k__BackingField",
+            "uintptr_t sAim2":                 "MADMMIICBNN GEGFCFDGGGP",
+            "uintptr_t sAim3":                 "0x38",
+            "uintptr_t sAim4":                 "Vector3 NHKKHPLFMNG",
+            "uintptr_t AimbotVisible":         "Collider HECFNHJKOMN",
+            "uintptr_t NoReload":              "ShootNoReload"
         }
     },
 
@@ -843,9 +843,9 @@ const searchSections = [
     {
         section: "Avatar & Visibility",
         entries: {
-            "Avatar":                "IUmaAvatar EEAGBKBMBLD",
-            "WeaponData (Alt)":      "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
-            "IntWeaponType":         "OOIPMACFIFL LAEMLAPIAFD"
+            "uintptr_t Avatar":                "IUmaAvatar EEAGBKBMBLD",
+            "uintptr_t WeaponData (Alt)":      "CHEJCCHHDMH <NOAOCMKGLAH>k__BackingField",
+            "uintptr_t IntWeaponType":         "OOIPMACFIFL LAEMLAPIAFD"
         }
     },
 
@@ -855,9 +855,9 @@ const searchSections = [
     {
         section: "Observer & View Matrix",
         entries: {
-            "ObserverPlayer":        "Player NJMDHHGDNPJ",
-            "ViewMatrixV1":          "<>f__mg$cache26",
-            "ViewMatrixV2":          "<>f__mg$cache9"
+            "uintptr_t ObserverPlayer":        "Player NJMDHHGDNPJ",
+            "uintptr_t ViewMatrixV1":          "<>f__mg$cache26",
+            "uintptr_t ViewMatrixV2":          "<>f__mg$cache9"
         }
     },
 
@@ -867,8 +867,8 @@ const searchSections = [
     {
         section: "Miscellaneous / Time & Attributes",
         entries: {
-            "GameTimer":             "m_DeltaTime",
-            "FixedDeltaTime":        "m_FixedDeltaTime"
+            "uintptr_t GameTimer":             "m_DeltaTime",
+            "uintptr_t FixedDeltaTime":        "m_FixedDeltaTime"
         }
     }
 ];
@@ -1005,6 +1005,7 @@ function downloadCsResult() {
     }, 2000);
 
 }
+
 
 
 
